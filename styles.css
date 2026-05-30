@@ -178,15 +178,21 @@ p { margin: 0 0 1em; }
   gap: 10px;
   color: var(--wine);
 }
+/* Brand mark uses the colored PNG artwork.
+   Height drives the size; img preserves its native aspect ratio. */
 .brand-mark {
-  display: grid; place-items: center;
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: var(--wine);
-  color: var(--gilt-soft);
-  transition: transform .4s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  transition: transform .5s var(--ease);
+}
+.brand-mark img {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 .brand:hover .brand-mark { transform: rotate(-4deg); }
+
 .brand-word {
   font-family: var(--serif);
   font-size: 22px;
@@ -196,13 +202,12 @@ p { margin: 0 0 1em; }
   font-weight: 500;
   font-style: normal;
 }
-.brand-large .brand-mark { width: 48px; height: 48px; }
+.brand-large .brand-mark { height: 56px; }
 .brand-large .brand-word { font-size: 26px; }
 
-/* Slightly smaller brand mark on phones so it sits well in the header */
+/* Tighter sizing on phones */
 @media (max-width: 520px) {
-  .brand-mark { width: 34px; height: 34px; }
-  .brand-mark svg { width: 22px; height: 26px; }
+  .brand-mark { height: 36px; }
   .brand-word { font-size: 19px; }
 }
 
