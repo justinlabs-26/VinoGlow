@@ -180,11 +180,13 @@ p { margin: 0 0 1em; }
 }
 .brand-mark {
   display: grid; place-items: center;
-  width: 30px; height: 30px;
+  width: 38px; height: 38px;
   border-radius: 50%;
   background: var(--wine);
   color: var(--gilt-soft);
+  transition: transform .4s var(--ease);
 }
+.brand:hover .brand-mark { transform: rotate(-4deg); }
 .brand-word {
   font-family: var(--serif);
   font-size: 22px;
@@ -194,7 +196,7 @@ p { margin: 0 0 1em; }
   font-weight: 500;
   font-style: normal;
 }
-.brand-large .brand-mark { width: 38px; height: 38px; }
+.brand-large .brand-mark { width: 48px; height: 48px; }
 .brand-large .brand-word { font-size: 26px; }
 
 .nav-primary {
@@ -483,6 +485,88 @@ p { margin: 0 0 1em; }
 @media (max-width: 880px) {
   .story-grid { grid-template-columns: 1fr; }
   .story-aside { position: static; }
+}
+
+/* ---------- The Origin (vineyard diptych) ---------- */
+.origin {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+  background: var(--ivory);
+  position: relative;
+}
+.origin-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(48px, 6vw, 80px);
+}
+.origin-head .section-label { display: inline-block; margin-bottom: 18px; }
+.origin-head .section-title { margin-bottom: 22px; }
+.origin-head .muted {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+}
+
+/* full-bleed diptych breaks out of the container */
+.origin-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+.origin-gallery figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--wine-deep);
+}
+.origin-gallery img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.6s var(--ease), filter 1.6s var(--ease);
+  filter: saturate(1.05) contrast(1.02);
+}
+.origin-gallery figure:hover img { transform: scale(1.04); }
+.origin-gallery figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(20, 8, 12, 0.55) 100%);
+  pointer-events: none;
+}
+.origin-gallery figcaption {
+  position: absolute;
+  bottom: clamp(20px, 3vw, 32px);
+  left: clamp(20px, 3vw, 36px);
+  right: clamp(20px, 3vw, 36px);
+  color: var(--ivory);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+  z-index: 1;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+.origin-coda {
+  text-align: center;
+  max-width: 600px;
+  margin: clamp(48px, 6vw, 80px) auto 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2vw, 26px);
+  color: var(--wine);
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .origin-gallery { grid-template-columns: 1fr; gap: 4px; }
+  .origin-gallery img { aspect-ratio: 4 / 5; }
 }
 
 /* ---------- Science ---------- */
