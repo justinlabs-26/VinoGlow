@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Wine background, matching the packaging -->
+  <circle cx="50" cy="50" r="50" fill="#4a0e1a"/>
+  <g transform="translate(13 -2) scale(0.78)"
+     fill="none" stroke="#d4b88a"
+     stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Grape leaf -->
+    <path d="M 30 34 C 22 34 14 30 14 22 C 14 16 18 12 22 14 C 24 10 28 10 30 14 C 32 10 36 10 38 14 C 42 12 46 16 46 22 C 46 30 38 34 30 34 Z"/>
+    <path d="M 30 34 L 30 14"/>
+    <path d="M 28 22 L 18 20"/>
+    <path d="M 28 28 L 18 30"/>
+    <path d="M 32 22 L 42 20"/>
+    <path d="M 32 28 L 42 30"/>
+    <!-- Curling tendril -->
+    <path d="M 52 22 C 60 14 72 12 80 18 C 86 24 82 32 76 30 C 72 28 72 26 76 26"/>
+    <!-- Grape cluster -->
+    <circle cx="32" cy="54" r="6"/>
+    <circle cx="46" cy="54" r="6"/>
+    <circle cx="60" cy="54" r="6"/>
+    <circle cx="39" cy="66" r="6"/>
+    <circle cx="53" cy="66" r="6"/>
+    <circle cx="46" cy="78" r="6"/>
+    <!-- Teardrop -->
+    <path d="M 46 88 C 40 92 40 104 46 108 C 52 104 52 92 46 88 Z"/>
+    <!-- Curling tail -->
+    <path d="M 38 104 C 34 106 32 104 34 100"/>
+  </g>
+</svg>

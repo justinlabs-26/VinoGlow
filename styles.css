@@ -199,6 +199,13 @@ p { margin: 0 0 1em; }
 .brand-large .brand-mark { width: 48px; height: 48px; }
 .brand-large .brand-word { font-size: 26px; }
 
+/* Slightly smaller brand mark on phones so it sits well in the header */
+@media (max-width: 520px) {
+  .brand-mark { width: 34px; height: 34px; }
+  .brand-mark svg { width: 22px; height: 26px; }
+  .brand-word { font-size: 19px; }
+}
+
 .nav-primary {
   justify-self: center;
   display: flex;
@@ -347,17 +354,28 @@ p { margin: 0 0 1em; }
 
 .hero-meta { display: flex; flex-direction: column; gap: 28px; }
 .price-block {
-  display: flex; align-items: baseline; gap: 10px;
+  display: flex; align-items: baseline; flex-wrap: wrap;
+  gap: 10px 0;
   font-family: var(--serif);
 }
-.price-currency { font-size: 22px; color: var(--ink-soft); }
-.price-amount   { font-size: 44px; font-weight: 400; line-height: 1; }
+.price-currency { font-size: 22px; color: var(--ink-soft); margin-right: 6px; }
+.price-amount   { font-size: clamp(36px, 4vw, 44px); font-weight: 400; line-height: 1; }
 .price-detail   {
   margin-left: 16px; padding-left: 16px;
   font-family: var(--sans); font-size: 11px;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--muted);
   border-left: 1px solid var(--line);
+  white-space: nowrap;
+}
+/* When the price block wraps (narrow screens), the detail jumps below —
+   replace the left border separator with a top spacer */
+@media (max-width: 420px) {
+  .price-detail {
+    margin-left: 0; padding-left: 0;
+    border-left: 0;
+    width: 100%;
+  }
 }
 
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -508,15 +526,12 @@ p { margin: 0 0 1em; }
   line-height: 1.55;
 }
 
-/* full-bleed diptych breaks out of the container */
+/* Full-bleed diptych. The parent <section> has no horizontal padding,
+   so the gallery naturally spans the full viewport width. */
 .origin-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  margin-left: -50vw;
 }
 .origin-gallery figure {
   margin: 0;
