@@ -687,6 +687,37 @@ p { margin: 0 0 1em; }
   .spec-pairs { grid-template-columns: 1fr; gap: 18px; }
 }
 
+/* ---------- Healthy Aging / Ingredient ---------- */
+.ingredient {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+  background: var(--paper);
+}
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+.ingredient-copy .section-label { display: inline-block; margin-bottom: 18px; }
+.ingredient-copy .section-title { margin-bottom: 28px; }
+.ingredient-copy p { font-size: 17px; color: var(--ink-soft); line-height: 1.7; }
+.ingredient-copy .paragraph-lead { color: var(--ink); font-size: 18px; }
+.ingredient-figure { margin: 0; overflow: hidden; position: relative; }
+.ingredient-figure img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.6s var(--ease);
+}
+.ingredient-figure:hover img { transform: scale(1.04); }
+
+@media (max-width: 880px) {
+  .ingredient-grid { grid-template-columns: 1fr; }
+  .ingredient-figure { order: -1; } /* image leads on mobile */
+}
+
 /* ---------- Features ---------- */
 .features {
   padding-top: var(--section-y);
