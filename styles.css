@@ -989,6 +989,22 @@ p { margin: 0 0 1em; }
   gap: clamp(40px, 6vw, 96px);
   align-items: center;
 }
+/* Wraps the purchase image + its origin caption so they stack
+   inside the same grid column. */
+.purchase-image-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.purchase-image-col .origin-mark {
+  margin: 22px 0 0;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
 .purchase-image {
   background:
     radial-gradient(ellipse at 50% 30%, rgba(184, 149, 106, 0.22), transparent 60%),
