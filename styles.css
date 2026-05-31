@@ -30,7 +30,7 @@
   /* Spacing */
   --container: 1280px;
   --gutter: clamp(20px, 4vw, 56px);
-  --section-y: clamp(80px, 11vw, 160px);
+  --section-y: clamp(56px, 7vw, 110px);
 
   /* Motion */
   --ease: cubic-bezier(.2,.7,.2,1);
