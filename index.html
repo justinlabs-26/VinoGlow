@@ -406,18 +406,24 @@
               novalidate>
           <div class="form-row">
             <div class="form-field">
-              <label for="contact-name">Name</label>
-              <input id="contact-name" type="text" name="name" required autocomplete="name" />
+              <label for="contact-first-name">First Name</label>
+              <input id="contact-first-name" type="text" name="first_name" required autocomplete="given-name" />
             </div>
+            <div class="form-field">
+              <label for="contact-last-name">Last Name</label>
+              <input id="contact-last-name" type="text" name="last_name" required autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="form-row">
             <div class="form-field">
               <label for="contact-email">Email</label>
               <input id="contact-email" type="email" name="email" required autocomplete="email" />
             </div>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-subject">Subject</label>
-            <input id="contact-subject" type="text" name="subject" autocomplete="off" />
+            <div class="form-field">
+              <label for="contact-phone">Phone</label>
+              <input id="contact-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" />
+            </div>
           </div>
 
           <div class="form-field">
