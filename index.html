@@ -380,6 +380,63 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
+    <section class="contact" id="contact" aria-label="Contact">
+      <div class="container contact-inner">
+        <header class="contact-head reveal">
+          <p class="section-label">Contact</p>
+          <h2 class="section-title">Have a <em>question?</em></h2>
+          <p class="contact-intro">
+            Whether you'd like to learn more about Vino Glow, our formulations,
+            or your order — we'd love to hear from you. Send us a note below and
+            we'll respond within two business days.
+          </p>
+        </header>
+
+        <!-- IMPORTANT: replace REPLACE_WITH_FORMSPREE_ID with your real Formspree form ID.
+             See signup instructions in the README / commit message. -->
+        <form class="contact-form reveal"
+              action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID"
+              method="POST"
+              novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" type="text" name="name" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" type="email" name="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-subject">Subject</label>
+            <input id="contact-subject" type="text" name="subject" autocomplete="off" />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required></textarea>
+          </div>
+
+          <!-- Formspree honeypot: bots fill this in, humans don't. Hidden from real users. -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true" />
+
+          <!-- Sets the reply-to header so you can hit Reply in your inbox -->
+          <input type="hidden" name="_subject" value="New Vino Glow inquiry" />
+
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary">
+              <span>Send Message</span>
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
     <!-- EDITORIAL QUOTE -->
     <section class="editorial">
       <div class="container">

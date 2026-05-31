@@ -90,6 +90,66 @@
   });
 
   // -----------------------------
+  // Contact form — submit via fetch so the user stays on the page
+  // and sees an inline confirmation (works with Formspree's JSON endpoint).
+  // -----------------------------
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = contactForm.querySelector(".form-status");
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const btnSpan = submitBtn?.querySelector("span");
+      const originalText = btnSpan?.textContent;
+
+      // Basic native validation (we set novalidate so we can style our own)
+      if (!contactForm.checkValidity()) {
+        if (status) {
+          status.textContent = "Please fill in the required fields.";
+          status.className = "form-status is-error";
+        }
+        return;
+      }
+
+      submitBtn.disabled = true;
+      if (btnSpan) btnSpan.textContent = "Sending…";
+      if (status) {
+        status.textContent = "";
+        status.className = "form-status";
+      }
+
+      try {
+        const res = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          contactForm.reset();
+          if (status) {
+            status.textContent = "Thank you — your message has been received.";
+            status.className = "form-status is-success";
+          }
+        } else {
+          const data = await res.json().catch(() => ({}));
+          const msg =
+            data?.errors?.map((e) => e.message).join(", ") ||
+            "Something went wrong. Please try again.";
+          throw new Error(msg);
+        }
+      } catch (err) {
+        if (status) {
+          status.textContent = err.message || "Something went wrong. Please try again.";
+          status.className = "form-status is-error";
+        }
+      } finally {
+        submitBtn.disabled = false;
+        if (btnSpan && originalText) btnSpan.textContent = originalText;
+      }
+    });
+  }
+
+  // -----------------------------
   // Smooth in-page anchors w/ header offset
   // -----------------------------
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
