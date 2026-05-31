@@ -193,25 +193,20 @@ p { margin: 0 0 1em; }
 }
 .brand:hover .brand-mark { transform: rotate(-4deg); }
 
-/* Wordmark uses Cinzel (Trajan-style Roman caps) to match the
-   typography on the official logo artwork. */
-.brand-word {
-  font-family: "Cinzel", var(--serif);
-  font-size: 17px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  font-weight: 500;
-  font-style: normal;
-  line-height: 1;
+/* Wordmark uses the exact artwork from the supplied logo PNG so the
+   typography matches the brand identity precisely. */
+.brand-word-img {
+  height: 22px;
+  width: auto;
+  display: block;
 }
 .brand-large .brand-mark { height: 56px; }
-.brand-large .brand-word { font-size: 22px; letter-spacing: 0.16em; }
+.brand-large .brand-word-img { height: 28px; }
 
 /* Tighter sizing on phones */
 @media (max-width: 520px) {
   .brand-mark { height: 36px; }
-  .brand-word { font-size: 14px; letter-spacing: 0.12em; }
+  .brand-word-img { height: 17px; }
 }
 
 .nav-primary {
