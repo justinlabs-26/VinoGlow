@@ -136,18 +136,6 @@ p { margin: 0 0 1em; }
   html { scroll-behavior: auto; }
 }
 
-/* ---------- Announcement bar ---------- */
-.announcement {
-  background: var(--wine-deep);
-  color: var(--ivory);
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  padding: 11px 16px;
-}
-.announcement p { margin: 0; opacity: 0.92; }
-
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
