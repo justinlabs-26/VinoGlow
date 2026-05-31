@@ -99,6 +99,18 @@ p { margin: 0 0 1em; }
   font-weight: 400;
 }
 
+/* Section title rendered as the logo wordmark image */
+.section-title--logo {
+  display: block;
+  line-height: 1;
+}
+.section-title--logo img {
+  display: block;
+  height: clamp(38px, 5.2vw, 64px);
+  width: auto;
+  max-width: 100%;
+}
+
 .muted { color: var(--muted); }
 .paragraph-lead { font-size: clamp(17px, 1.4vw, 19px); color: var(--ink-soft); }
 .paragraph-quote {
@@ -765,6 +777,16 @@ p { margin: 0 0 1em; }
 @media (max-width: 600px) {
   .feature-list { grid-template-columns: 1fr; }
   .feature { border-right: 0 !important; padding: 36px 8px 40px; }
+}
+
+/* Two-step variant for "How to Use" — always 2 columns on desktop,
+   single column on phones. */
+.feature-list--steps {
+  grid-template-columns: 1fr 1fr;
+}
+.feature-list--steps .feature:nth-child(2n) { border-right: 0; }
+@media (max-width: 600px) {
+  .feature-list--steps { grid-template-columns: 1fr; }
 }
 
 /* ---------- Image feature ---------- */
