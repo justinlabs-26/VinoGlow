@@ -337,12 +337,9 @@ p { margin: 0 0 1em; }
 }
 .hero-copy { padding-right: clamp(0px, 2vw, 24px); }
 .eyebrow {
-  display: inline-flex; align-items: center; gap: 12px;
+  display: inline-block;
   margin-bottom: 28px;
-  color: var(--wine);
-}
-.eyebrow::before {
-  content: ""; width: 28px; height: 1px; background: var(--wine);
+  color: var(--ink-soft);
 }
 .hero h1 { margin-bottom: 28px; }
 .lede {
