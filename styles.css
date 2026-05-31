@@ -393,7 +393,7 @@ p { margin: 0 0 1em; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
 
 .hero-bullets {
-  display: flex; flex-wrap: wrap; gap: 22px 28px;
+  display: flex; flex-direction: column; gap: 14px;
   font-size: 12px; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--muted);
   margin-top: 12px;
