@@ -152,16 +152,18 @@
     btn.addEventListener("click", () => showStep(btn.dataset.cartBack));
   });
 
-  // Shipping form → done step (basic native validation, no payment fields)
+  // Shipping form → "Continue to Payment" intentionally does nothing on a
+  // valid submission. Required-field validation still fires for empty forms
+  // (so the UI behaves normally up to that point), but a fully-filled click
+  // is a silent no-op — the payment step is not wired.
   const shippingForm = document.getElementById("cart-shipping");
   const shippingSubmit = drawer?.querySelector("[data-cart-submit-shipping]");
   if (shippingForm && shippingSubmit) {
     shippingSubmit.addEventListener("click", () => {
       if (!shippingForm.checkValidity()) {
         shippingForm.reportValidity();
-        return;
       }
-      showStep("done");
+      // Intentionally no further action on a valid form.
     });
   }
 

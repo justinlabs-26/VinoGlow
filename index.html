@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
 
@@ -628,8 +628,8 @@
       <!-- Step 2 — Shipping (the step before payment) -->
       <section class="cart-step" data-step="shipping">
         <div class="cart-body">
-          <p class="cart-step-eyebrow">Step 1 of 2</p>
-          <h3 class="cart-step-title">Shipping Details</h3>
+          <p class="cart-step-eyebrow">Shipping</p>
+          <h3 class="cart-step-title">Where should we send it?</h3>
 
           <form class="cart-form" id="cart-shipping" novalidate>
             <div class="cart-form-row">
@@ -682,31 +682,9 @@
         </footer>
       </section>
 
-      <!-- Step 3 — Done (the step BEFORE actual card entry) -->
-      <section class="cart-step" data-step="done">
-        <div class="cart-body cart-done">
-          <div class="cart-done-mark" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.4">
-              <circle cx="24" cy="24" r="21"/>
-              <path d="M15 24l7 7 13-14"/>
-            </svg>
-          </div>
-          <p class="cart-step-eyebrow">Step 2 of 2</p>
-          <h3 class="cart-step-title">Almost there.</h3>
-          <p class="cart-done-body">
-            Secure online payment is coming soon. A member of our team will
-            reach out to confirm your order and arrange payment.
-          </p>
-        </div>
-        <footer class="cart-foot">
-          <button type="button" class="btn btn-primary btn-block" data-cart-close>
-            <span>Close</span>
-          </button>
-        </footer>
-      </section>
     </aside>
   </div>
 
-  <script src="script.js?v=2" defer></script>
+  <script src="script.js?v=3" defer></script>
 </body>
 </html>
