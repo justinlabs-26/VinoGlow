@@ -353,6 +353,11 @@ p { margin: 0 0 1em; }
   margin-bottom: 28px;
   color: var(--ink-soft);
 }
+.eyebrow-divider {
+  color: var(--gilt);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
 .hero h1 { margin-bottom: 28px; }
 .lede {
   font-family: var(--serif);
