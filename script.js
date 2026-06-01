@@ -63,14 +63,109 @@
   }
 
   // -----------------------------
-  // Add to cart (visual only)
+  // Cart (visual only) + Drawer checkout
   // -----------------------------
+  const UNIT_PRICE = 1195;
   const cartBtn = document.querySelector(".icon-btn");
   const cartCountEl = document.querySelector(".cart-count");
   const toast = document.getElementById("cart-toast");
+  const drawer = document.getElementById("cart-drawer");
   let cartCount = 0;
   let toastTimer;
 
+  const formatPrice = (n) =>
+    "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+
+  const refreshDrawer = () => {
+    if (!drawer) return;
+    const empty = drawer.querySelector(".cart-empty");
+    const items = drawer.querySelector(".cart-items");
+    const qtyEl = drawer.querySelector("[data-cart-qty]");
+    const lineEl = drawer.querySelector("[data-cart-line]");
+    const subtotalEls = drawer.querySelectorAll("[data-cart-subtotal]");
+    const checkoutBtn = drawer.querySelector('[data-cart-next="shipping"]');
+
+    if (cartCount > 0) {
+      if (empty) empty.hidden = true;
+      if (items) items.hidden = false;
+      if (qtyEl) qtyEl.textContent = String(cartCount);
+      if (lineEl) lineEl.textContent = formatPrice(cartCount * UNIT_PRICE);
+      if (checkoutBtn) checkoutBtn.disabled = false;
+    } else {
+      if (empty) empty.hidden = false;
+      if (items) items.hidden = true;
+      if (checkoutBtn) checkoutBtn.disabled = true;
+    }
+    subtotalEls.forEach((el) => {
+      el.textContent = formatPrice(cartCount * UNIT_PRICE);
+    });
+  };
+
+  const showStep = (name) => {
+    if (!drawer) return;
+    drawer.querySelectorAll(".cart-step").forEach((s) => {
+      s.classList.toggle("is-active", s.dataset.step === name);
+    });
+    // Reset scroll on step switch
+    const activeBody = drawer.querySelector(".cart-step.is-active .cart-body");
+    if (activeBody) activeBody.scrollTop = 0;
+  };
+
+  const openDrawer = () => {
+    if (!drawer) return;
+    refreshDrawer();
+    showStep("bag");
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("cart-open");
+  };
+
+  const closeDrawer = () => {
+    if (!drawer) return;
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("cart-open");
+  };
+
+  // Header cart icon → open drawer
+  if (cartBtn) {
+    cartBtn.addEventListener("click", openDrawer);
+  }
+
+  // Close handlers (overlay, X button, "Close" button on done step)
+  drawer?.querySelectorAll("[data-cart-close]").forEach((el) => {
+    el.addEventListener("click", closeDrawer);
+  });
+
+  // Escape key closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer?.classList.contains("is-open")) {
+      closeDrawer();
+    }
+  });
+
+  // Step navigation
+  drawer?.querySelectorAll("[data-cart-next]").forEach((btn) => {
+    btn.addEventListener("click", () => showStep(btn.dataset.cartNext));
+  });
+  drawer?.querySelectorAll("[data-cart-back]").forEach((btn) => {
+    btn.addEventListener("click", () => showStep(btn.dataset.cartBack));
+  });
+
+  // Shipping form → done step (basic native validation, no payment fields)
+  const shippingForm = document.getElementById("cart-shipping");
+  const shippingSubmit = drawer?.querySelector("[data-cart-submit-shipping]");
+  if (shippingForm && shippingSubmit) {
+    shippingSubmit.addEventListener("click", () => {
+      if (!shippingForm.checkValidity()) {
+        shippingForm.reportValidity();
+        return;
+      }
+      showStep("done");
+    });
+  }
+
+  // Add-to-cart buttons (hero + purchase block)
   document.querySelectorAll("[data-cart-button]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const qty = parseInt(qtyInput?.value, 10) || 1;
@@ -80,6 +175,8 @@
         cartBtn.classList.add("bump");
         setTimeout(() => cartBtn.classList.remove("bump"), 320);
       }
+
+      refreshDrawer();
 
       if (toast) {
         toast.classList.add("is-visible");

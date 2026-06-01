@@ -579,6 +579,134 @@
     Added to cart
   </div>
 
+  <!-- Cart drawer -->
+  <div class="cart-drawer" id="cart-drawer" aria-hidden="true">
+    <div class="cart-drawer-overlay" data-cart-close></div>
+    <aside class="cart-drawer-panel" role="dialog" aria-label="Your bag" aria-modal="true">
+      <header class="cart-drawer-head">
+        <p class="cart-drawer-title">Your Bag</p>
+        <button type="button" class="cart-close" data-cart-close aria-label="Close bag">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Step 1 — Bag -->
+      <section class="cart-step is-active" data-step="bag">
+        <div class="cart-body">
+          <p class="cart-empty" hidden>Your bag is empty.</p>
+          <ul class="cart-items" hidden>
+            <li class="cart-item">
+              <div class="cart-item-img">
+                <picture>
+                  <source srcset="vino-glow-syringe-and-box-copy.webp?v=3" type="image/webp" />
+                  <img src="vino-glow-syringe-and-box-copy.jpg?v=3" alt="" width="200" height="200" />
+                </picture>
+              </div>
+              <div class="cart-item-meta">
+                <p class="cart-item-name">Vino Glow — The Signature Ritual</p>
+                <p class="cart-item-sub">Single-dose precision applicator</p>
+                <p class="cart-item-qty">Qty <span data-cart-qty>1</span></p>
+              </div>
+              <p class="cart-item-price"><span data-cart-line>$1,195</span></p>
+            </li>
+          </ul>
+        </div>
+        <footer class="cart-foot">
+          <div class="cart-subtotal">
+            <span>Subtotal</span>
+            <span class="cart-subtotal-val" data-cart-subtotal>$0</span>
+          </div>
+          <p class="cart-fineprint">Shipping calculated at the next step.</p>
+          <button type="button" class="btn btn-primary btn-block" data-cart-next="shipping" disabled>
+            <span>Checkout</span>
+          </button>
+        </footer>
+      </section>
+
+      <!-- Step 2 — Shipping (the step before payment) -->
+      <section class="cart-step" data-step="shipping">
+        <div class="cart-body">
+          <p class="cart-step-eyebrow">Step 1 of 2</p>
+          <h3 class="cart-step-title">Shipping Details</h3>
+
+          <form class="cart-form" id="cart-shipping" novalidate>
+            <div class="cart-form-row">
+              <div class="cart-field">
+                <label for="ship-first">First Name</label>
+                <input id="ship-first" type="text" name="first_name" required autocomplete="given-name" />
+              </div>
+              <div class="cart-field">
+                <label for="ship-last">Last Name</label>
+                <input id="ship-last" type="text" name="last_name" required autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="cart-field">
+              <label for="ship-email">Email</label>
+              <input id="ship-email" type="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="cart-field">
+              <label for="ship-addr1">Address</label>
+              <input id="ship-addr1" type="text" name="address1" required autocomplete="address-line1" />
+            </div>
+            <div class="cart-field">
+              <label for="ship-addr2">Apt / Suite <span class="cart-optional">(optional)</span></label>
+              <input id="ship-addr2" type="text" name="address2" autocomplete="address-line2" />
+            </div>
+            <div class="cart-form-row cart-form-row--3">
+              <div class="cart-field">
+                <label for="ship-city">City</label>
+                <input id="ship-city" type="text" name="city" required autocomplete="address-level2" />
+              </div>
+              <div class="cart-field">
+                <label for="ship-state">State</label>
+                <input id="ship-state" type="text" name="state" required autocomplete="address-level1" />
+              </div>
+              <div class="cart-field">
+                <label for="ship-zip">ZIP</label>
+                <input id="ship-zip" type="text" name="zip" required autocomplete="postal-code" inputmode="numeric" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <footer class="cart-foot">
+          <div class="cart-subtotal">
+            <span>Total</span>
+            <span class="cart-subtotal-val" data-cart-subtotal>$0</span>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" data-cart-submit-shipping>
+            <span>Continue to Payment</span>
+          </button>
+          <button type="button" class="cart-back" data-cart-back="bag">Back to bag</button>
+        </footer>
+      </section>
+
+      <!-- Step 3 — Done (the step BEFORE actual card entry) -->
+      <section class="cart-step" data-step="done">
+        <div class="cart-body cart-done">
+          <div class="cart-done-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="24" cy="24" r="21"/>
+              <path d="M15 24l7 7 13-14"/>
+            </svg>
+          </div>
+          <p class="cart-step-eyebrow">Step 2 of 2</p>
+          <h3 class="cart-step-title">Almost there.</h3>
+          <p class="cart-done-body">
+            Secure online payment is coming soon. A member of our team will
+            reach out to confirm your order and arrange payment.
+          </p>
+        </div>
+        <footer class="cart-foot">
+          <button type="button" class="btn btn-primary btn-block" data-cart-close>
+            <span>Close</span>
+          </button>
+        </footer>
+      </section>
+    </aside>
+  </div>
+
   <script src="script.js" defer></script>
 </body>
 </html>
