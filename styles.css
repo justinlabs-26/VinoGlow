@@ -1106,8 +1106,6 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 880px) {
   .purchase-inner { grid-template-columns: 1fr; }
-  .purchase-image { order: 1; }
-  .purchase-copy { order: 2; }
 }
 
 /* ---------- Footer ---------- */
