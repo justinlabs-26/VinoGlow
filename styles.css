@@ -1227,7 +1227,7 @@ p { margin: 0 0 1em; }
 .cart-drawer-panel {
   position: absolute;
   top: 0; right: 0; bottom: 0;
-  width: min(440px, 100%);
+  width: min(460px, 100%);
   background: var(--ivory);
   display: flex;
   flex-direction: column;
@@ -1276,13 +1276,16 @@ p { margin: 0 0 1em; }
 .cart-body {
   flex: 1;
   overflow-y: auto;
-  padding: 24px 28px;
+  overflow-x: hidden;
+  padding: 22px 24px;
+  min-width: 0;
 }
 .cart-foot {
   flex-shrink: 0;
-  padding: 20px 28px 28px;
+  padding: 18px 24px 22px;
   border-top: 1px solid var(--line);
   background: var(--ivory);
+  min-width: 0;
 }
 
 /* Bag step */
@@ -1369,14 +1372,14 @@ p { margin: 0 0 1em; }
   margin: 0 0 20px;
   letter-spacing: 0.01em;
 }
-.cart-form { display: grid; gap: 14px; }
+.cart-form { display: grid; gap: 12px; }
 .cart-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
+  min-width: 0;
 }
-.cart-form-row--3 { grid-template-columns: 1.4fr 1fr 1fr; }
-.cart-field { display: grid; gap: 6px; }
+.cart-field { display: grid; gap: 6px; min-width: 0; }
 .cart-field label {
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -1390,6 +1393,9 @@ p { margin: 0 0 1em; }
   opacity: 0.7;
 }
 .cart-field input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   border: 1px solid var(--line);
   background: #fff;
   padding: 11px 12px;
@@ -1446,11 +1452,27 @@ p { margin: 0 0 1em; }
 /* Lock body scroll while drawer is open */
 body.cart-open { overflow: hidden; }
 
+.cart-item {
+  min-width: 0;
+}
+.cart-item-meta {
+  min-width: 0;
+}
+.cart-item-name {
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 520px) {
   .cart-drawer-panel { width: 100%; box-shadow: none; }
-  .cart-drawer-head { padding: 18px 20px; }
-  .cart-body { padding: 20px; }
-  .cart-foot { padding: 18px 20px 24px; }
-  .cart-form-row--3 { grid-template-columns: 1fr 1fr; }
-  .cart-form-row--3 .cart-field:first-child { grid-column: 1 / -1; }
+  .cart-drawer-head { padding: 16px 18px; }
+  .cart-drawer-title { font-size: 20px; }
+  .cart-body { padding: 18px; }
+  .cart-foot { padding: 16px 18px 20px; }
+  .cart-item { grid-template-columns: 64px 1fr auto; gap: 12px; }
+  .cart-item-img { width: 64px; height: 64px; }
+  .cart-item-name { font-size: 15px; }
+  .cart-item-price { font-size: 15px; }
+  .cart-step-title { font-size: 22px; margin-bottom: 16px; }
+  .cart-form { gap: 11px; }
+  .cart-form-row { gap: 8px; }
 }
